@@ -1,17 +1,27 @@
 float x, xSpeed, y, ySpeed;
+int xButt, yButt, buttLength, buttHeight;
+String screen;
 
 void setup() {
- size(1000, 600); 
- x = 50;
- xSpeed = 4;
- y = 50;
- ySpeed = 4;
+  size(1000, 600); 
+  x = 50;
+  xSpeed = 4;
+  y = 50;
+  ySpeed = 4;
+  xButt = width/3;
+  yButt = height/3;
+  buttLength = width/5;
+  buttHeight = height/10;
+  screen = "MENU";
 }
 
-void draw() {
- 
+void menu() {
+  fill(137, 223, 255);
+  rect(xButt, yButt, buttLength, buttHeight);
+}
+
+void gameScreen() {
   //background and text
-  
   background(255, 255, 255);
   textSize(70);
   fill(137, 223, 255);
@@ -19,10 +29,10 @@ void draw() {
   textSize(70);
   fill(255, 186, 186); 
   text("THE WAR OF THE COLOURS", 40, 300);
- 
-  //pinkcircle
- 
+
+  //yellowcircle
   noStroke();
+  fill(255, 253, 155);
   ellipse(x, y, 45, 45);
   x += xSpeed;
   if (x + 22.5 > width || x - 22.5 < 0) {
@@ -31,5 +41,20 @@ void draw() {
   y = y + ySpeed;
   if (y + 22.5 > height || y - 22.5 < 0) {
     ySpeed *= -1;
+  }
+}
+
+void draw() {
+  if (screen.equals("MENU")) {
+    menu();
+  } else if (screen.equals("GAMESCREEN")) {
+    gameScreen();
+  }
+}
+
+void mousePressed() {
+  if (screen.equals("MENU") && mouseX > xButt && mouseX < xButt + buttLength && 
+      mouseY > yButt && mouseY < yButt + buttHeight) {
+    screen = "GAMESCREEN"; // or whatever u wanna call it
   }
 }
