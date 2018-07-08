@@ -55,6 +55,6 @@ void draw() {
 void mousePressed() {
   if (screen.equals("MENU") && mouseX > xButt && mouseX < xButt + buttLength && 
       mouseY > yButt && mouseY < yButt + buttHeight) {
-    screen = "GAMESCREEN"; // or whatever u wanna call it
+    screen = "GAMESCREEN"; // or whatever u wanna call it --> just make sure you stay consistent with whatever you name it
   }
 }
